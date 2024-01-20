@@ -39,10 +39,11 @@ public class SignUpRequest {
     @JsonProperty("password")
     @NotEmpty(message = "password cannot be empty")
     @Size(min = 8, message = "password must be at least 8 characters long")
-//    @Pattern(
-//            regexp addg= "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]+$",
-            //message = "password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character"
-//    )
+
+    @Pattern(
+            regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]+$",
+            message = "password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character"
+    )
     private String password;
 
     public SignUpRequest(String mail, String password123) {

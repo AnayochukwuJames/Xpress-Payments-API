@@ -51,17 +51,20 @@ public class SecurityConfiguration {
                 .passwordEncoder(passwordEncoder)
                 .and().build();
     }
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .cors(AbstractHttpConfigurer::disable)
                 .csrf(AbstractHttpConfigurer::disable)
-                .exceptionHandling(httpSecurityExceptionHandlingConfigurer -> httpSecurityExceptionHandlingConfigurer.authenticationEntryPoint(authenticationEntryPoint))
-                .sessionManagement(httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .exceptionHandling(httpSecurityExceptionHandlingConfigurer -> httpSecurityExceptionHandlingConfigurer
+                        .authenticationEntryPoint(authenticationEntryPoint))
+                .sessionManagement(httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> {
-                    authorizationManagerRequestMatcherRegistry.requestMatchers(allowedEndpoints).permitAll().anyRequest().authenticated();
-                }).addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class).logout(LogoutConfigurer::permitAll);
+                    authorizationManagerRequestMatcherRegistry.requestMatchers(allowedEndpoints).permitAll().anyRequest()
+                            .authenticated();
+                }).addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .logout(LogoutConfigurer::permitAll);
         return httpSecurity.build();
     }
 }

@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
 
 @OpenAPIDefinition(
         info = @Info(
-                contact = @Contact(name = "Timothy Ngonadi", email = "timothyolisaeloka@gmail.com", url = "https://www.github.com/timolisa"),
+                contact = @Contact(name = "Anayochukwu James", email = "anayochukwujames11@gmail.com", url = "https://github.com/AnayochukwuJames"),
                 description = "Open API documentation for Spring security.",
                 title = "XpressPayments API",
                 version = "1.0",
